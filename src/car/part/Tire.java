@@ -5,11 +5,10 @@ import car.CarCrashException;
 import java.util.Random;
 
 public class Tire extends CarPart {
+
     private static short instanceCount;
     private final short tireNumber;
     private float inflationPSI;
-
-    /* CONSTRUCTOR */
 
     public Tire(final float inflationPSI) {
         super("tire", "% traction", 100);
@@ -22,8 +21,6 @@ public class Tire extends CarPart {
         }
     }
 
-    /* GETTERS */
-
     public float getInflationPSI() {
         return this.inflationPSI;
     }
@@ -32,25 +29,24 @@ public class Tire extends CarPart {
         return this.tireNumber;
     }
 
-    /* SETTERS */
-
-    // Override to make sure tires are filled when replaced
-    // (inflationPSI isn't a default field of CarPart).
+    @Override
     public void replacePart() {
         super.replacePart();
         this.inflationPSI = 32;
     }
 
-    // Override status method to include tire number, not just serial number
+    @Override
     public void status() {
-        System.out.println("Tire #" + this.tireNumber + " (serial #00" + this.serialNumber + ") is at "
-                + this.condition + this.conditionMeasure + " and " + this.inflationPSI + "psi.");
+        System.out.printf("Tire #%s (serial #%d) is at %f%s and %f psi)\n",
+                this.tireNumber, this.getSerialNumber(), this.condition,
+                this.getConditionMeasure(), this.inflationPSI);
     }
 
+    @Override
     public void status(final String extraMessage) {
-        System.out.print("Tire #" + this.tireNumber + " ("
-                + this.condition + this.conditionMeasure + ", " + this.inflationPSI + "psi) says: ");
-        System.out.println(extraMessage);
+        System.out.printf("Tire #%s (serial #%d, %f%s, %f psi) says: %s\n",
+                this.tireNumber, this.getSerialNumber(), this.condition,
+                this.getConditionMeasure(), this.inflationPSI, extraMessage);
     }
 
     public void function(final float milesDriven) throws CarCrashException {

@@ -3,30 +3,28 @@ package car.part;
 import car.CarCrashException;
 
 public class Engine extends CarPart {
+
     private final long creationTime;
     private float lifeInMinutes;
 
-    /* CONSTRUCTOR */
-
-    // The engine lasts 10 years (10 real-life minutes), and as it gets
-    // older, the oil tank needs more frequent changes (see Car.run()
-    // for how they talk to each other).
+    /**
+     * The engine lasts 5 years (5 real-life minutes), and as it gets
+     * older, the oil tank needs more frequent changes (see {@link Car#run()}
+     * for how they talk to each other).
+     *
+     * @param yearsOld how old the engine is
+     */
     public Engine(final float yearsOld) {
-        super("engine", " years left", 10);
+        super("engine", " years left", 5);
         this.creationTime = System.currentTimeMillis();
         this.lifeInMinutes = 0;
     }
-
-    /* GETTERS */
 
     public float getLifeInMinutes() {
         return this.lifeInMinutes;
     }
 
-    /* SETTERS */
-
-    // override replacePart() because lifeInMinutes isn't a default
-    // field of the CarPart class.
+    @Override
     public void replacePart() {
         super.replacePart();
         this.lifeInMinutes = 0;

@@ -3,22 +3,17 @@ package car.part;
 import car.CarCrashException;
 
 public class OilTank extends CarPart {
-    private float engineAgeModifier;
 
-    /* CONSTRUCTOR */
+    private float engineAgeModifier;
 
     public OilTank(final float engineAgeModifier) {
         super("oil tank", " miles until change", 5000);
         this.engineAgeModifier = engineAgeModifier;
     }
 
-    /* GETTERS */
-
     public float getEngineAgeModifier() {
         return this.engineAgeModifier;
     }
-
-    /* SETTERS */
 
     public void setEngineAgeModifier(final float newModifier) {
         this.engineAgeModifier = newModifier;
@@ -40,4 +35,5 @@ public class OilTank extends CarPart {
             this.status("You should change your oil after " + this.condition + " more miles.");
         }
     }
+
 }

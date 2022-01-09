@@ -3,22 +3,17 @@ package car.part;
 import car.CarCrashException;
 
 public class GasTank extends CarPart {
-    private final float milesPerGallon;
 
-    /* CONSTRUCTOR */
+    private final float milesPerGallon;
 
     public GasTank(final float capacityGallons, final float milesPerGallon) {
         super("gas tank", " gallons", capacityGallons);
         this.milesPerGallon = milesPerGallon;
     }
 
-    /* GETTERS */
-
-    public float getMPG() {
+    public float getMilesPerGallon() {
         return this.milesPerGallon;
     }
-
-    /* SETTERS */
 
     public void fillTank(final float numOfGallons) {
         final float remainder = this.bestCondition - this.condition;
@@ -54,4 +49,5 @@ public class GasTank extends CarPart {
             this.status("You're good on gas.");
         }
     }
+
 }

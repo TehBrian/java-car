@@ -4,8 +4,6 @@ import car.CarCrashException;
 import car.Functional;
 import car.Interactive;
 
-// abstract because we're not defining function() from the
-// Functional interface here; we'll do that in subclasses
 public abstract class CarPart implements Functional, Interactive {
     // instanceCount can help us assign a serial number to each part,
     // to help out the mechanics. (My code probably won't use it.)
@@ -19,19 +17,15 @@ public abstract class CarPart implements Functional, Interactive {
     protected float condition;
     protected float currentTotalMiles;
 
-    /* CONSTRUCTOR */
-
     public CarPart(final String name, final String conditionMeasure, final float bestCondition) {
         instanceCount += 1;
         this.serialNumber = instanceCount;
         this.partName = name;
-        this.bestCondition = bestCondition;
         this.conditionMeasure = conditionMeasure;
+        this.bestCondition = bestCondition;
         this.condition = this.bestCondition;
         this.currentTotalMiles = 0;
     }
-
-    /* GETTERS */
 
     public String getPartName() {
         return this.partName;
@@ -70,8 +64,6 @@ public abstract class CarPart implements Functional, Interactive {
         }
     }
 
-    /* SETTERS */
-
     public float getCurrentTotalMiles() {
         return this.currentTotalMiles;
     }
@@ -94,16 +86,14 @@ public abstract class CarPart implements Functional, Interactive {
         this.currentTotalMiles = 0;
     }
 
-    // The status method can accept an extra message
     public void status() {
-        System.out.println("Your " + this.partName + " (serial #00" + this.serialNumber + ") is at "
-                + this.condition + this.conditionMeasure + ".");
+        System.out.printf("Your %s (serial #%d) is at %f%s.\n",
+                this.partName, this.serialNumber, this.condition, this.conditionMeasure);
     }
 
     public void status(final String extraMessage) {
-        System.out.print("Your " + this.partName + " ("
-                + this.condition + this.conditionMeasure + ") says: ");
-        System.out.println(extraMessage);
+        System.out.printf("Your %s (serial #%d, %f%s) says: %s\n",
+                this.partName, this.serialNumber, this.condition, this.conditionMeasure, extraMessage);
     }
 
     public void crashCar() throws CarCrashException {
@@ -113,4 +103,5 @@ public abstract class CarPart implements Functional, Interactive {
     public void function(final float milesDriven) throws CarCrashException {
         this.currentTotalMiles += milesDriven;
     }
+
 }
