@@ -1,5 +1,6 @@
 package car.part;
 
+import car.Car;
 import car.CarCrashException;
 
 public class Engine extends CarPart {
@@ -33,7 +34,7 @@ public class Engine extends CarPart {
     public void function(final float milesDriven) throws CarCrashException {
         super.function(milesDriven);
         this.lifeInMinutes = (System.currentTimeMillis() - this.creationTime) / 60000f;
-        this.setCondition(this.bestCondition - lifeInMinutes);
+        this.setCondition(this.getBestCondition() - lifeInMinutes);
         if (this.condition <= 0) {
             this.crashCar();
         } else if (this.condition <= 2) {

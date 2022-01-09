@@ -6,13 +6,13 @@ import car.Interactive;
 
 public abstract class CarPart implements Functional, Interactive {
     // instanceCount can help us assign a serial number to each part,
-    // to help out the mechanics. (My code probably won't use it.)
+    // to help out the mechanics.
     private static long instanceCount = 0;
 
-    protected String partName;
-    protected long serialNumber;
-    protected float bestCondition;
-    protected String conditionMeasure;
+    private final String partName;
+    private final long serialNumber;
+    private final float bestCondition;
+    private final String conditionMeasure;
 
     protected float condition;
     protected float currentTotalMiles;
