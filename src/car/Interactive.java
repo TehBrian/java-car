@@ -16,7 +16,7 @@ public interface Interactive {
         final String response;
         final Scanner scanner = new Scanner(System.in);
 
-        System.out.print(prompt + " Press enter when ready. ");
+        System.out.print(prompt + " ");
         response = scanner.nextLine();
         return response;
     }
