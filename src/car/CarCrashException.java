@@ -1,4 +1,4 @@
-package assignment;
+package car;
 
 public class CarCrashException extends Exception {
 	public CarCrashException(String message) {

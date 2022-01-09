@@ -1,4 +1,4 @@
-package assignment;
+package car;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package assignment;
+package car;
 
 public class GasTank extends CarPart {
 	private float milesPerGallon;

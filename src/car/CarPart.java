@@ -1,4 +1,4 @@
-package assignment;
+package car;
 
 // abstract because we're not defining function() from the
 // Functional interface here; we'll do that in subclasses
