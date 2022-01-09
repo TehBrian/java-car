@@ -7,12 +7,10 @@ import car.part.OilTank;
 import car.part.Tire;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Car implements Interactive {
-    private final ArrayList<CarPart> parts = new ArrayList<>();
 
-    /* CONSTRUCTOR */
+    private final ArrayList<CarPart> parts = new ArrayList<>();
 
     public Car() {
         this.parts.add(new GasTank(17.2f, 35));
@@ -23,23 +21,13 @@ public class Car implements Interactive {
         }
     }
 
-    /* GETTERS */
-
-    public String getParts() {
-        return toString(this.parts);
-    }
-
-    public String toString(final ArrayList<CarPart> partsList) {
-        String result = "";
-        for (final Iterator<CarPart> iter = partsList.iterator(); iter.hasNext(); ) {
-            result += (iter.next()).getPartName() + "\n";
-        }
-        return result;
+    public String listParts() {
+        return String.join("\n", this.parts.stream().map(Object::toString).toList());
     }
 
     public void status() {
-        for (final Iterator<CarPart> iter = this.parts.iterator(); iter.hasNext(); ) {
-            iter.next().status();
+        for (final CarPart part : this.parts) {
+            part.status();
         }
     }
 
@@ -70,4 +58,5 @@ public class Car implements Interactive {
             System.out.println("Thank you for driving responsibly.");
         }
     }
+
 }
