@@ -66,14 +66,14 @@ public class Tire extends CarPart {
             this.crashCar();
         } else if (this.condition < 25) {
             this.status("Low on traction.");
-            if (getBoolean("Replace?")) {
+            if (promptBoolean("Replace?")) {
                 this.replacePart();
                 this.status("Just replaced this worn-out tire.");
             }
         } else if (this.inflationPSI < 27) {
             final int remainder = 32 - (int) this.inflationPSI;
             this.status("Tire is low!");
-            if (getBoolean("Fill it?")) {
+            if (promptBoolean("Fill it?")) {
                 this.inflationPSI = 32;
                 this.status("Traction is OK but just added " + remainder + "psi to fill this tire.");
             }

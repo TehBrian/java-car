@@ -25,7 +25,7 @@ public class OilTank extends CarPart {
         this.setCondition(this.condition / this.engineAgeModifier);
         if (this.condition <= 0) {
             this.status("Time to change the oil.");
-            if (getBoolean("Go ahead?")) {
+            if (promptBoolean("Go ahead?")) {
                 this.setCondition(5000);
                 this.status("Oil changed!");
             } else {

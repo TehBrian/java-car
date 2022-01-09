@@ -39,8 +39,8 @@ public class GasTank extends CarPart {
             this.crashCar();
         } else if (this.condition <= (this.getBestCondition() / 4)) {
             this.status("Low on gas!");
-            if (getBoolean("Refill?")) {
-                this.fillTank(getFloat("How many gallons would you like to add?"));
+            if (promptBoolean("Refill?")) {
+                this.fillTank(promptFloat("How many gallons would you like to add?"));
             }
         }
         if ((this.condition / this.getBestCondition()) < 0.5) {

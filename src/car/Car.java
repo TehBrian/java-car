@@ -34,22 +34,26 @@ public class Car implements Interactive {
     public void run() {
         try {
             do {
-                final float miles = getFloat("How many miles are you driving?");
-                OilTank oTank = null;
+                final float miles = promptFloat("How many miles will you be driving?");
+
                 Engine engine = null;
-                for (int p = 0; p < parts.size(); p++) {
-                    parts.get(p).function(miles);
-                    if (parts.get(p).getPartName().equals("oil tank")) {
-                        oTank = (OilTank) parts.get(p);
-                    }
-                    if (parts.get(p).getPartName().equals("engine")) {
-                        engine = (Engine) parts.get(p);
+                OilTank oTank = null;
+                for (final CarPart part : parts) {
+                    part.function(miles);
+
+                    if (part instanceof Engine instance) {
+                        engine = instance;
+                    } else if (part instanceof OilTank instance) {
+                        oTank = instance;
                     }
                 }
-                // The oil tank's behavior is affected by the engine's age in years,
-                // which are actually real-life minutes.
-                oTank.setEngineAgeModifier(1 + (engine.getLifeInMinutes() / engine.getBestCondition()));
-            } while (getBoolean("Keep driving?"));
+
+                if (engine != null && oTank != null) {
+                    // The oil tank's behavior is affected by the engine's age in years,
+                    // which are actually real-life minutes.
+                    oTank.setEngineAgeModifier(1 + (engine.getLifeInMinutes() / engine.getBestCondition()));
+                }
+            } while (promptBoolean("Keep driving?"));
             this.status();
         } catch (final CarCrashException e) {
             System.out.println(e.getMessage());

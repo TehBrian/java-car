@@ -3,20 +3,21 @@ package car;
 import java.util.Scanner;
 
 public interface Interactive {
-    public default float getFloat(final String prompt) {
-        return Float.parseFloat(this.getString(prompt));
+
+    default float promptFloat(final String prompt) throws NumberFormatException {
+        return Float.parseFloat(this.promptString(prompt));
     }
 
-    public default boolean getBoolean(final String prompt) {
-        return (getString(prompt + " (Y is yes)").toUpperCase().contains("Y"));
+    default boolean promptBoolean(final String prompt) {
+        return this.promptString(prompt + " (Y for yes)").toUpperCase().contains("Y");
     }
 
-    public default String getString(final String prompt) {
-        String response = "";
-        final Scanner reader = new Scanner(System.in);
+    default String promptString(final String prompt) {
+        final String response;
+        final Scanner scanner = new Scanner(System.in);
+
         System.out.print(prompt + " Press enter when ready. ");
-        response = reader.nextLine();
-        //reader.close();
+        response = scanner.nextLine();
         return response;
     }
 

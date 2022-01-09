@@ -39,7 +39,7 @@ public class Engine extends CarPart {
             this.crashCar();
         } else if (this.condition <= 2) {
             this.status("Your engine is getting old!");
-            if (getBoolean("Replace?")) {
+            if (promptBoolean("Replace?")) {
                 this.replacePart();
                 this.status("Engine replaced!");
             }
