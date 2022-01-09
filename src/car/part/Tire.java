@@ -6,12 +6,12 @@ import java.util.Random;
 
 public class Tire extends CarPart {
 	private static short instanceCount;
-	private short tireNumber;
+	private final short tireNumber;
 	private float inflationPSI;
 	
 	/* CONSTRUCTOR */
 	
-	public Tire(float inflationPSI) {
+	public Tire(final float inflationPSI) {
 		super("tire", "% traction", 100);
 		instanceCount += 1;
 		this.tireNumber = instanceCount;
@@ -41,17 +41,17 @@ public class Tire extends CarPart {
 			System.out.println("Tire #" + this.tireNumber + " (serial #00" + this.serialNumber + ") is at "
 					+ this.condition + this.conditionMeasure + " and " + this.inflationPSI + "psi.");
 		}
-		public void status(String extraMessage) {
+		public void status(final String extraMessage) {
 			System.out.print("Tire #" + this.tireNumber +  " ("
 					+ this.condition + this.conditionMeasure + ", " + this.inflationPSI + "psi) says: ");
 			System.out.println(extraMessage);
 		}
 	
-	public void function(float milesDriven) throws CarCrashException {
+	public void function(final float milesDriven) throws CarCrashException {
 		super.function(milesDriven);
-		Random rand = new Random();
+		final Random rand = new Random();
 		this.changeCondition(-1 * (milesDriven / 1000) * rand.nextFloat());
-		float pressureLoss;
+		final float pressureLoss;
 		for (int i=0; i<(milesDriven); i++) {
 			if (rand.nextInt(2000) == 1999) {
 				pressureLoss = (rand.nextFloat() * this.inflationPSI * 0.5f);
@@ -69,7 +69,7 @@ public class Tire extends CarPart {
 				this.status("Just replaced this worn-out tire.");
 			}
 		} else if (this.inflationPSI < 27) {
-			int remainder = 32 - (int) this.inflationPSI;
+			final int remainder = 32 - (int) this.inflationPSI;
 			this.status("Tire is low!");
 			if (getBoolean("Fill it?")) {
 				this.inflationPSI = 32;

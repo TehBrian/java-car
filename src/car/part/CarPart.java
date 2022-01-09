@@ -21,7 +21,7 @@ public abstract class CarPart implements Functional, Interactive {
 	
 	/* CONSTRUCTOR */
 	
-	public CarPart(String name, String conditionMeasure, float bestCondition) {
+	public CarPart(final String name, final String conditionMeasure, final float bestCondition) {
 		instanceCount += 1;
 		this.serialNumber = instanceCount;
 		this.partName = name;
@@ -45,7 +45,7 @@ public abstract class CarPart implements Functional, Interactive {
 	
 	/* SETTERS */
 	
-	public void setCondition(float newCondition) {
+	public void setCondition(final float newCondition) {
 		this.condition = newCondition;
 		if (this.condition < 0) {
 			this.condition = 0;
@@ -54,7 +54,7 @@ public abstract class CarPart implements Functional, Interactive {
 		}
 	}
 	
-	public void changeCondition(float delta) {
+	public void changeCondition(final float delta) {
 		this.condition += delta;
 		if (this.condition < 0) {
 			this.condition = 0;
@@ -77,7 +77,7 @@ public abstract class CarPart implements Functional, Interactive {
 		System.out.println("Your " + this.partName + " (serial #00" + this.serialNumber + ") is at "
 				+ this.condition + this.conditionMeasure + ".");
 	}
-	public void status(String extraMessage) {
+	public void status(final String extraMessage) {
 		System.out.print("Your " + this.partName + " ("
 				+ this.condition + this.conditionMeasure + ") says: ");
 		System.out.println(extraMessage);
@@ -87,7 +87,7 @@ public abstract class CarPart implements Functional, Interactive {
 		throw new CarCrashException("The " + this.partName + " broke and crashed the car!");
 	}
 	
-	public void function(float milesDriven) throws CarCrashException {
+	public void function(final float milesDriven) throws CarCrashException {
 		this.currentTotalMiles += milesDriven;
 	}
 }

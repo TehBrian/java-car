@@ -3,11 +3,11 @@ package car.part;
 import car.CarCrashException;
 
 public class GasTank extends CarPart {
-	private float milesPerGallon;
+	private final float milesPerGallon;
 	
 	/* CONSTRUCTOR */
 	
-	public GasTank(float capacityGallons, float milesPerGallon) {
+	public GasTank(final float capacityGallons, final float milesPerGallon) {
 		super("gas tank", " gallons", capacityGallons);
 		this.milesPerGallon = milesPerGallon;
 	}
@@ -18,8 +18,8 @@ public class GasTank extends CarPart {
 	
 	/* SETTERS */
 	
-	public void fillTank(float numOfGallons) {
-		float remainder = this.bestCondition - this.condition;
+	public void fillTank(final float numOfGallons) {
+		final float remainder = this.bestCondition - this.condition;
 		if (this.condition < 0) {
 			this.status("Nice try, but you can't steal my gas with a negative number! Adding "
 					+ remainder + " gallons to reach capacity.");
@@ -34,9 +34,9 @@ public class GasTank extends CarPart {
 		}
 	}
 	
-	public void function(float milesDriven) throws CarCrashException {
+	public void function(final float milesDriven) throws CarCrashException {
 		super.function(milesDriven);
-		float gallonsConsumed = milesDriven / this.milesPerGallon;
+		final float gallonsConsumed = milesDriven / this.milesPerGallon;
 		this.changeCondition(-1 * gallonsConsumed);
 		if (this.condition <= 0) {
 			this.crashCar();

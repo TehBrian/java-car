@@ -3,7 +3,7 @@ package car.part;
 import car.CarCrashException;
 
 public class Engine extends CarPart{
-	private long creationTime;
+	private final long creationTime;
 	private float lifeInMinutes;
 	
 	/* CONSTRUCTOR */
@@ -11,7 +11,7 @@ public class Engine extends CarPart{
 	// The engine lasts 10 years (10 real-life minutes), and as it gets
 	// older, the oil tank needs more frequent changes (see Car.run()
 	// for how they talk to each other).
-	public Engine(float yearsOld) {
+	public Engine(final float yearsOld) {
 		super("engine", " years left", 10);
 		this.creationTime = System.currentTimeMillis();
 		this.lifeInMinutes = 0;
@@ -30,7 +30,7 @@ public class Engine extends CarPart{
 		this.lifeInMinutes = 0;
 	}
 	
-	public void function(float milesDriven) throws CarCrashException {
+	public void function(final float milesDriven) throws CarCrashException {
 		super.function(milesDriven);
 		this.lifeInMinutes = (System.currentTimeMillis() - this.creationTime) / 60000f;
 		this.setCondition(this.bestCondition - lifeInMinutes);

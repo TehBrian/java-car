@@ -7,7 +7,7 @@ public class OilTank extends CarPart {
 	
 	/* CONSTRUCTOR */
 	
-	public OilTank(float engineAgeModifier) {
+	public OilTank(final float engineAgeModifier) {
 		super("oil tank", " miles until change", 5000);
 		this.engineAgeModifier = engineAgeModifier;
 	}
@@ -18,11 +18,11 @@ public class OilTank extends CarPart {
 	
 	/* SETTERS */
 	
-	public void setEngineAgeModifier(float newModifier) {
+	public void setEngineAgeModifier(final float newModifier) {
 		this.engineAgeModifier = newModifier;
 	}
 	
-	public void function(float milesDriven) throws CarCrashException {
+	public void function(final float milesDriven) throws CarCrashException {
 		super.function(milesDriven);
 		this.changeCondition(-1 * milesDriven);
 		this.setCondition(this.condition / this.engineAgeModifier);

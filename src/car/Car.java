@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Car implements Interactive {
-	private ArrayList<CarPart> parts = new ArrayList<>();
+	private final ArrayList<CarPart> parts = new ArrayList<>();
 	
 	/* CONSTRUCTOR */
 	
@@ -27,16 +27,16 @@ public class Car implements Interactive {
 	
 	public String getParts() { return toString(this.parts); }
 	
-	public String toString(ArrayList<CarPart> partsList) {
+	public String toString(final ArrayList<CarPart> partsList) {
 		String result = "";
-		for (Iterator<CarPart> iter = partsList.iterator(); iter.hasNext();) {
+		for (final Iterator<CarPart> iter = partsList.iterator(); iter.hasNext();) {
 			result += (iter.next()).getPartName() + "\n";
 		}
 		return result;
 	}
 	
 	public void status() {
-		for (Iterator<CarPart> iter = this.parts.iterator(); iter.hasNext();) {
+		for (final Iterator<CarPart> iter = this.parts.iterator(); iter.hasNext();) {
 			iter.next().status();
 		}
 	}
@@ -44,7 +44,7 @@ public class Car implements Interactive {
 	public void run() {
 		try {
 			do {
-				float miles = getFloat("How many miles are you driving?");
+				final float miles = getFloat("How many miles are you driving?");
 				OilTank oTank = null;
 				Engine engine = null;
 				for (int p = 0; p<parts.size(); p++) {
@@ -57,7 +57,7 @@ public class Car implements Interactive {
 				oTank.setEngineAgeModifier(1 + (engine.getLifeInMinutes() / engine.getBestCondition()));
 			} while (getBoolean("Keep driving?"));
 			this.status();
-		} catch (CarCrashException e) {
+		} catch (final CarCrashException e) {
 			System.out.println(e.getMessage());
 			System.out.println("Your car crashed! You'll have to buy a new one and start over.");
 		} finally {
