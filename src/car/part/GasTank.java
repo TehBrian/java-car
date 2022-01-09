@@ -1,4 +1,6 @@
-package car;
+package car.part;
+
+import car.CarCrashException;
 
 public class GasTank extends CarPart {
 	private float milesPerGallon;
@@ -32,7 +34,7 @@ public class GasTank extends CarPart {
 		}
 	}
 	
-	public void function(float milesDriven) throws CarCrashException{
+	public void function(float milesDriven) throws CarCrashException {
 		super.function(milesDriven);
 		float gallonsConsumed = milesDriven / this.milesPerGallon;
 		this.changeCondition(-1 * gallonsConsumed);

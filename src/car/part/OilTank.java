@@ -1,4 +1,6 @@
-package car;
+package car.part;
+
+import car.CarCrashException;
 
 public class OilTank extends CarPart {
 	private float engineAgeModifier;
@@ -20,7 +22,7 @@ public class OilTank extends CarPart {
 		this.engineAgeModifier = newModifier;
 	}
 	
-	public void function(float milesDriven) throws CarCrashException{
+	public void function(float milesDriven) throws CarCrashException {
 		super.function(milesDriven);
 		this.changeCondition(-1 * milesDriven);
 		this.setCondition(this.condition / this.engineAgeModifier);

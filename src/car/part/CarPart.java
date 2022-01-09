@@ -1,4 +1,8 @@
-package car;
+package car.part;
+
+import car.CarCrashException;
+import car.Functional;
+import car.Interactive;
 
 // abstract because we're not defining function() from the
 // Functional interface here; we'll do that in subclasses

@@ -1,5 +1,11 @@
 package car;
 
+import car.part.CarPart;
+import car.part.Engine;
+import car.part.GasTank;
+import car.part.OilTank;
+import car.part.Tire;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -24,7 +30,7 @@ public class Car implements Interactive {
 	public String toString(ArrayList<CarPart> partsList) {
 		String result = "";
 		for (Iterator<CarPart> iter = partsList.iterator(); iter.hasNext();) {
-			result += ((CarPart) iter.next()).partName + "\n";
+			result += (iter.next()).getPartName() + "\n";
 		}
 		return result;
 	}
@@ -43,8 +49,8 @@ public class Car implements Interactive {
 				Engine engine = null;
 				for (int p = 0; p<parts.size(); p++) {
 					parts.get(p).function(miles);
-					if (parts.get(p).partName == "oil tank") { oTank = (OilTank) parts.get(p); }
-					if (parts.get(p).partName == "engine") { engine = (Engine) parts.get(p); }
+					if (parts.get(p).getPartName().equals("oil tank")) { oTank = (OilTank) parts.get(p); }
+					if (parts.get(p).getPartName().equals("engine")) { engine = (Engine) parts.get(p); }
 				}
 				// The oil tank's behavior is affected by the engine's age in years,
 				// which are actually real-life minutes.

@@ -1,4 +1,6 @@
-package car;
+package car.part;
+
+import car.CarCrashException;
 
 import java.util.Random;
 
@@ -45,7 +47,7 @@ public class Tire extends CarPart {
 			System.out.println(extraMessage);
 		}
 	
-	public void function(float milesDriven) throws CarCrashException{
+	public void function(float milesDriven) throws CarCrashException {
 		super.function(milesDriven);
 		Random rand = new Random();
 		this.changeCondition(-1 * (milesDriven / 1000) * rand.nextFloat());

@@ -1,4 +1,6 @@
-package car;
+package car.part;
+
+import car.CarCrashException;
 
 public class Engine extends CarPart{
 	private long creationTime;
